@@ -8,7 +8,7 @@
   <title>Graphic preview</title>
 
   <!--build:css css/styles.min.css-->
-  <link rel="stylesheet" href="css/loan-calculator_styles.css">
+  <link rel="stylesheet" href="css/house-affordability-calculator_styles.css">
   <!--endbuild-->
 
 </head>
@@ -18,15 +18,46 @@
 
   <div id="calculator">
 
-    <p class="calculator-label">Loan calculator</p>
+    <p class="calculator-label">Home affordability calculator</p>
 
     <div class="flex-container">
 
       <div class="input-area">
 
         <div class="calc-input money-input wrap">
-          <label for="amount">Loan amount</label>
-          <input type="text" name="amount" v-model="amount" maxlength="10" oninput="this.value=this.value.slice(0,this.maxLength)"></input>
+          <label for="income">Annual household income before taxes</label>
+          <input type="text" name="income" v-model="income" maxlength="10" oninput="this.value=this.value.slice(0,this.maxLength)"></input>
+        </div>
+
+        <div class="calc-input money-input wrap">
+          <label for="monthly_debts">Monthly debt payments</label>
+          <input type="text" name="monthly_debts" v-model="monthly_debts" maxlength="5" oninput="this.value=this.value.slice(0,this.maxLength)"></input>
+        </div>
+
+        <div class="calc-input money-input">
+          <label for="down_payment">Down payment</label>
+          <input type="text" name="down_payment" v-model="down_payment" maxlength="7" oninput="this.value=this.value.slice(0,this.maxLength)"></input>
+        </div>
+
+        <div class="calc-input">
+          <label for="state">State</label>
+          <input type="text" id="state-dropdown" class="dropdown" list="state-name" name="state" v-model="state" />
+          <datalist id="state-name">
+            <option v-for="option in options" v-bind:key="option.state" v-model="state" >{{ option.state }}</option>
+          </datalist>
+        </div>
+
+        <div class="calc-input">
+          <label for="credit_score">Credit score</label>
+          <input type="text" id="credit-dropdown" class="dropdown" list="credit-score" name="credit-score" v-model="credit_score" />
+          <datalist id="credit-score">
+            <option v-for="option in credit_options" v-bind:key="option.scpre" v-model="credit_score" >{{ option.score }}</option>
+          </datalist>
+        </div>
+
+        <!-- <div class="calc-input money-input wrap">
+          <label for="amount">State</label>
+          <input type="text" name="amount" v-model="amount" maxlength="7" oninput="this.value=this.value.slice(0,this.maxLength)"></input>
         </div>
 
         <div class="wrap">
@@ -47,16 +78,16 @@
         <div class="calc-input percent-input ">
           <label for="interest-rate">Annual interest rate</label>
           <input type="number" name="interest-rate" v-model.number="interestRate" maxlength="5"></input>
-        </div>
+        </div> -->
 
-        <button v-on:click="getResults">Calculate</button>
+        <!-- <button v-on:click="getResults">Calculate</button> -->
 
       </div>
 
         
       <div class="results">
 
-        <table>
+        <!-- <table>
           <tr>
             <td class="label-text">Monthly payment</td>
             <td class="value-text">${{monthlyPayment}}</td>
@@ -73,18 +104,18 @@
             <td class="label-text">Total interest paid</td>
             <td class="value-text">${{totalInterest}}</td>
           </tr>
-        </table>
+        </table> -->
 
-        <div class="chart-header">
+        <!-- <div class="chart-header">
           {{headerString}}
-        </div>
+        </div> -->
 
         <div class="chart-container" id="chart-container-loancalc"></div>
 
-        <div class="alt-payments">
+        <!-- <div class="alt-payments">
           <p>If you increase your monthly payments by 10% to <span class="value-text">${{tenPayment}}</span>, you will save <span class="value-text">${{tenSave}}</span> in interest and pay off your loan by <span class="value-text">{{tenPayoff}}</span>.</p>
           <p>If you increase your monthly payments by 25% to <span class="value-text">${{twentyfivePayment}}</span>, you will save <span class="value-text">${{twentyfiveSave}}</span> in interest and pay off your loan by <span class="value-text">{{twentyfivePayoff}}</span>.</p>
-        </div>
+        </div> -->
 
         
       </div>
@@ -105,7 +136,7 @@
   <!-- <script src="https://code.highcharts.com/highcharts-more.js"></script> -->
   <!--build:js js/main.min.js -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
-  <script src="js/loan-calculator_main.js"></script>
+  <script src="js/house-affordability-calculator_main.js"></script>
   <!-- endbuild -->
 </body>
 </html>

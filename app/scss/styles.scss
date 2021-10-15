@@ -47,12 +47,21 @@ $font-stack: 'Avenir Next', 'Arial', sans-serif;
   font-size: 18px;
   padding: 20px;
   background-color: $green-secondary-5;
-  background-image: url(https://fm.cnbc.com/applications/cnbc.com/resources/files/2020/01/29/background-5.png);
-  background-position: left 75px;
+  background-image: url(https://image.cnbcfm.com/api/v1/image/106898415-1623877719756-calculator-bg_copy.png);
+  background-position: left 105px;
   background-repeat: no-repeat;
   background-size: 620px;
   @include sm-md-xl(){
     padding: 20px 30px;
+    background-position: left 75px;
+  }
+
+  .intro {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .2px;
+    margin-bottom: 20px;
+    max-width: 490px;
   }
 
   .flex-container {
@@ -72,8 +81,10 @@ $font-stack: 'Avenir Next', 'Arial', sans-serif;
     font-weight: 600;
     letter-spacing: 1px;
     color: white;
+    max-width: 300px;
     @include sm-md-xl {
       font-size: 24px;
+      max-width: 100%;
     }
   }
 
@@ -106,87 +117,79 @@ $font-stack: 'Avenir Next', 'Arial', sans-serif;
       color: $green-primary;
       font-weight: 600;
       padding: 5px 5px 5px 10px;
-      width: 140px;
-      @include x-small {
-        width: 215px;
-      }
+      width: 130px;
     }
     &.money-input {
       &:after {
         content: '$';
         position: relative;
         top: -2px;
-        left: -150px;
+        left: -170px;
         height: 20px;
         width: 10px;
         z-index: 999;
         color: $slate-secondary-3;
-        @include x-small {
-          left: -225px;
-        }
       }
       & input {
-        padding-left: 20px;
-        width: 130px;
-        margin-right: 5px;
-        @include x-small {
-          width: 205px;
-        }
+        padding-left: 25px;
+        width: 115px;
+        margin-right: 35px;
       }
     }
-    &.percent-input {
-      &:after {
-        content: '%';
-        position: relative;
-        top: -2px;
-        left: -40px;
-        height: 20px;
-        width: 10px;
-        z-index: 999;
-        color: $slate-secondary-3;
+    & .dropdown {
+      width: 95%;
+      margin-right: 0;
+      max-width: 100%;
+      font-size: 16px;
+      padding: 11px 5px 9px 10px;
+      color: $green-primary;
+      font-weight: 600;
+      border: 1px solid $slate-secondary-3;
+      @include sm-md-xl(){
+        width: 325px;
       }
     }
   }
 
-  .calc-input-radio {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: -20px;
-    margin-top: -15px;
-    @include x-small {
-      margin-top: -15px;
-      margin-bottom: 20px;
-    }
-    & input {
-      position: absolute !important;
-      clip: rect(0, 0, 0, 0);
-      height: 1px;
-      width: 1px;
-      border: 0;
-      overflow: hidden;
-      &:checked + label {
-        box-shadow: none;
-        background-image: url(https://fm.cnbc.com/applications/cnbc.com/resources/files/2020/01/29/white-radio-filled.png);
-      }
-    }
-    & label {
-      background-image: url(https://fm.cnbc.com/applications/cnbc.com/resources/files/2020/01/29/white-radio-empty.png);
-      background-repeat: no-repeat;
-      background-size: 18px;
-      background-position: 0px center;
-      font-size: 16px;
-      line-height: 1;
-      font-weight: 500;
-      letter-spacing: .7px;
-      padding: 8px 2px 6px 24px;
-      margin-right: 10px;
-      border: 0;
-      transition: all 0.2s ease-in-out;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-  }
+  // .calc-input-radio {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   margin-bottom: -20px;
+  //   margin-top: -15px;
+  //   @include x-small {
+  //     margin-top: -15px;
+  //     margin-bottom: 20px;
+  //   }
+  //   & input {
+  //     position: absolute !important;
+  //     clip: rect(0, 0, 0, 0);
+  //     height: 1px;
+  //     width: 1px;
+  //     border: 0;
+  //     overflow: hidden;
+  //     &:checked + label {
+  //       box-shadow: none;
+  //       background-image: url(https://fm.cnbc.com/applications/cnbc.com/resources/files/2020/01/29/white-radio-filled.png);
+  //     }
+  //   }
+  //   & label {
+  //     background-image: url(https://fm.cnbc.com/applications/cnbc.com/resources/files/2020/01/29/white-radio-empty.png);
+  //     background-repeat: no-repeat;
+  //     background-size: 18px;
+  //     background-position: 0px center;
+  //     font-size: 16px;
+  //     line-height: 1;
+  //     font-weight: 500;
+  //     letter-spacing: .7px;
+  //     padding: 8px 2px 6px 24px;
+  //     margin-right: 10px;
+  //     border: 0;
+  //     transition: all 0.2s ease-in-out;
+  //     &:hover {
+  //       cursor: pointer;
+  //     }
+  //   }
+  // }
 
   .results {
     flex-grow: 1;
@@ -209,22 +212,58 @@ $font-stack: 'Avenir Next', 'Arial', sans-serif;
     }
   }
 
-  .label-text {
-    margin-block-start: 0;
-    margin-block-end: 0;
-    font-weight: 600;
+  .result {
+    margin-top: 5px;
+    margin-bottom: 20px;
     font-size: 16px;
-    margin-left: 10px;
+    height: 120px;
+    @include sm-md-xl(){
+      height: 90px;
+    }
+    & .result-highlight {
+      color: white;
+      font-weight: 600;
+      padding: 0px 5px;
+      background-color: $green-primary;
+    }
+    & .result-highlight-metro {
+      color: white;
+      font-weight: 600;
+      padding: 0px 5px;
+      background-color: $green-secondary-5;
+    }
   }
 
-  .value-text  {
-    font-weight: 700;
-    color: $green-primary;
-    padding-left: 5px;
-    text-align: right;
-    @include x-x-small {
-      padding-left: 0px;
+  .key {
+    font-size: 12px;
+    margin-bottom: 20px;
+    & .key-item:first-child {
+      margin-right: 20px;
+      margin-bottom: 5px;
+      @include sm-md-xl(){
+        float: left;
+      }
     }
+    & .metro-square, .us-square {
+      height: 14px;
+      width: 14px;
+      margin-right: 5px;
+      background-color: $green-secondary-5;
+      float: left;
+    }
+    & .us-square {
+      background-color: $green-secondary-3;
+    }
+  }
+
+  .label-text {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .label-explain-text {
+    font-size: 13px;
+    color: $slate-secondary-5;
   }
 
   table {
@@ -268,11 +307,11 @@ $font-stack: 'Avenir Next', 'Arial', sans-serif;
 
   & .chart-container {
     width: 100%;
-    height: 250px;
+    height: 120px;
     background: white;
     margin-bottom: 20px;
     @include x-small {
-      height: 200px;
+      height: 120px;
     }
     @include x-x-small {
       max-width: 240px;
@@ -282,7 +321,7 @@ $font-stack: 'Avenir Next', 'Arial', sans-serif;
     }
   }
 
-  .chart-credit {
+  .chart-source, .chart-credit {
     font-size: 9.5px;
     line-height: 12px;
     text-transform: uppercase;
@@ -291,16 +330,19 @@ $font-stack: 'Avenir Next', 'Arial', sans-serif;
     width: 100%;
     color: white;
     margin-top: 20px;
+  }
+
+  .chart-credit {
     @include sm-md-xl {
-        font-size: 10px;
-        text-align: right;
-        margin-bottom: -30px;
-    }
+      font-size: 10px;
+      text-align: right;
+      margin-bottom: -30px;
+  }
   }
 
   button {
-    margin-bottom: 15px;
-    margin-top: 10px;
+    width: 148px;
+    margin-bottom: 25px;
     color: white;
     font-size: 16px;
     line-height: 1;
@@ -319,6 +361,17 @@ $font-stack: 'Avenir Next', 'Arial', sans-serif;
     }
     @include x-small {
       padding: 12px 16px 12px 16px;
+    }
+  }
+
+  .error-message {
+    color: white;
+    font-size: 16px;
+    margin-left: 20px;
+    margin-top: 10px;
+    @include x-small(){
+      width: 85px;
+      margin-top: 0;
     }
   }
 
@@ -346,5 +399,32 @@ $font-stack: 'Avenir Next', 'Arial', sans-serif;
   
 }
 
+& .highcharts-axis-line {
+  display: none;
 }
 
+& .highcharts-grid-line {
+  &:first-child, &:last-child {
+    stroke: $slate-secondary-3;
+    stroke-width: 1;
+  }
+}
+
+& .highcharts-tick {
+  stroke: $slate-secondary-4;
+  &:nth-child(2) {
+    display: none;
+  }
+}
+
+& .highcharts-series {
+  & rect:first-child {
+    fill: $green-secondary-3;
+  }
+}
+
+& .not-middle-line {
+  stroke: $slate-secondary-5;
+}
+
+}
